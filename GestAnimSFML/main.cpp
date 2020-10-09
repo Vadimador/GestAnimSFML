@@ -3,6 +3,7 @@
 
 int main()
 {
+    std::cout << "wesh encore";
     std::cout << "wesh";
     std::cout << "zbeub zbeub";
     sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
