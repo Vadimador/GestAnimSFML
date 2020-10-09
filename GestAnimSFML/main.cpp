@@ -3,7 +3,7 @@
 
 int main()
 {
-    std::cout << "ton chat est très joli";
+    std::cout << "vous voulez agrandir la taille de votre égo ?";
     sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
