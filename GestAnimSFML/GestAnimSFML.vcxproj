@@ -153,7 +153,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GestAnim.cpp" />
+    <ClCompile Include="GestAnimated.cpp" />
+    <ClCompile Include="GestAnimSFML.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="testanim.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GestAnim.h" />
+    <ClInclude Include="GestAnimated.h" />
+    <ClInclude Include="GestAnimSFML.h" />
+    <ClInclude Include="testanim.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
