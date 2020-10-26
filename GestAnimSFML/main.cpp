@@ -1,13 +1,17 @@
 #include <iostream>
 #include "SFML/Graphics.hpp"
+#include "GestAnimSFML.h"
+#include "EncaTransformable.h"
+#include "testanim.h"
 
 int main()
 {
-    std::cout << "wesh encore";
-    std::cout << "wesh";
-    std::cout << "zbeub zbeub";
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+    sf::RenderWindow window(sf::VideoMode(1000, 500), "SFML works!");
+    GestAnimSFML::GestAnimSFML(&window); // initialisation
+
+    sf::RectangleShape shape(sf::Vector2f(100.f,50.f));
+    shape.setPosition(sf::Vector2f(100.f, 100.f));
     shape.setFillColor(sf::Color::Green);
 
     while (window.isOpen())
@@ -18,7 +22,14 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
+        //Update
+        shape.rotate(0.05f);
 
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+            GestAnimSFML::addGestAnimation(new testanim(&EncaTransformable(&shape)));
+        }
+        
+        std::cout << shape.getPosition().x << "," << shape.getPosition().y << "\n";
         window.clear();
         window.draw(shape);
         window.display();

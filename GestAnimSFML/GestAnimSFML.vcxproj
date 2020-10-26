@@ -153,6 +153,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="EncaTransformable.cpp" />
     <ClCompile Include="GestAnim.cpp" />
     <ClCompile Include="GestAnimated.cpp" />
     <ClCompile Include="GestAnimSFML.cpp" />
@@ -160,6 +161,8 @@
     <ClCompile Include="testanim.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EncaTransformable.h" />
+    <ClInclude Include="EnumGestAnimState.h" />
     <ClInclude Include="GestAnim.h" />
     <ClInclude Include="GestAnimated.h" />
     <ClInclude Include="GestAnimSFML.h" />
