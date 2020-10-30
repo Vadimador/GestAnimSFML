@@ -7,6 +7,7 @@ class GestAnimSFML
 {
 private:
 	static std::vector<GestAnim*> listGestAnim;
+	static std::vector<int> listTempUpdateDelete;
 
 public:
 	GestAnimSFML(sf::RenderWindow* window);
