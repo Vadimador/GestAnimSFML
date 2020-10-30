@@ -8,9 +8,10 @@ private:
 	EnumGestAnimState state;
 	static int IdCompteur;
 	int id;
-	GestAnimated* objet;
+	
 	
 protected:
+	GestAnimated* objet;
 	static sf::RenderWindow* window;
 	sf::Vector2u getSizeWindow();
 	void setState(EnumGestAnimState&& state);

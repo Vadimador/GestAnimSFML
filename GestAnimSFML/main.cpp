@@ -14,8 +14,12 @@ int main()
     shape.setPosition(sf::Vector2f(100.f, 100.f));
     shape.setFillColor(sf::Color::Green);
 
+    sf::Clock clock;
+    float deltaTime = 0.f;
+
     while (window.isOpen())
     {
+        deltaTime = clock.restart().asSeconds();
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -23,6 +27,7 @@ int main()
                 window.close();
         }
         //Update
+        GestAnimSFML::update(deltaTime);
         shape.rotate(0.05f);
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
