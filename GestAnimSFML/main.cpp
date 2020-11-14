@@ -42,3 +42,17 @@ int main()
 
     return 0;
 }
+
+/*
+* Translation de A a B direct (selon vitesse ou temps) <-- pour le François
+* Translation de A a B direct avec rebond
+* Translation via fonction <-- pour le nathou (dans l'idéal : funtion("x+2"))
+* Changement vers couleur précise <-- pour le Vadim
+* Vibration
+* Flotement <-- pour le François
+* Oscillation
+* Clignotement <-- pour le Vadim
+* Rotation
+* ------ Réfléchir sur les chaînes d'animations
+* Max 30 novembre
+*/
