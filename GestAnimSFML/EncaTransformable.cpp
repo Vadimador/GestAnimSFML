@@ -1,7 +1,7 @@
 #include "EncaTransformable.h"
 
 EncaTransformable::EncaTransformable(sf::Transformable* trans)
-	: trans(trans)
+	: GestAnimated(true), trans(trans)
 {
 }
 

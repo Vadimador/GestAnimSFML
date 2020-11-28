@@ -9,8 +9,9 @@ int main()
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     sf::RenderWindow window(sf::VideoMode(1000, 500), "SFML works!");
     GestAnimSFML::GestAnimSFML(&window); // initialisation
+    
+    sf::RectangleShape shape(sf::Vector2f(100.f, 50.f));
 
-    sf::RectangleShape shape(sf::Vector2f(100.f,50.f));
     shape.setPosition(sf::Vector2f(100.f, 100.f));
     shape.setFillColor(sf::Color::Green);
 
@@ -31,7 +32,7 @@ int main()
         shape.rotate(0.05f);
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-            GestAnimSFML::addGestAnimation(new testanim(&EncaTransformable(&shape)));
+            GestAnimSFML::addGestAnimation(new testanim(new EncaTransformable(&shape)));
         }
         
         std::cout << shape.getPosition().x << "," << shape.getPosition().y << "\n";
@@ -39,7 +40,7 @@ int main()
         window.draw(shape);
         window.display();
     }
-
+    
     return 0;
 }
 

@@ -43,4 +43,7 @@ EnumGestAnimState GestAnim::getState()
 
 GestAnim::~GestAnim()
 {
+	if (this->objet->IsEncapsulator()) { // si la classe est une classe d'encapsulation
+		delete this->objet;
+	}
 }

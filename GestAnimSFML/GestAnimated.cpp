@@ -1,5 +1,10 @@
 #include "GestAnimated.h"
 
+GestAnimated::GestAnimated(bool isEncapsulator)
+{
+    this->isEncapsulator = isEncapsulator;
+}
+
 sf::Vector2f GestAnimated::getGestSize() const
 {
     return sf::Vector2f();
@@ -43,4 +48,9 @@ void GestAnimated::setGestRotation(float rotation)
 
 void GestAnimated::setGestColor(sf::Color color)
 {
+}
+
+bool GestAnimated::IsEncapsulator()
+{
+    return this->isEncapsulator;
 }

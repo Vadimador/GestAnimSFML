@@ -3,7 +3,11 @@
 
 class GestAnimated
 {
+private:
+	bool isEncapsulator; // Boolean indiquant si la classe est une classe d'encapsulation ou non (Si true, la classe va être supprimée)
 public:
+	GestAnimated(bool isEncapsulator);
+
 	virtual sf::Vector2f getGestSize() const;
 	virtual sf::Vector2f getGestPosition() const ;
 	virtual sf::Vector2f getGestRotationAxis() const;
@@ -15,5 +19,7 @@ public:
 	virtual void setGestRotationAxis(sf::Vector2f posAxis) ;
 	virtual void setGestRotation(float rotation);
 	virtual void setGestColor(sf::Color color);
+
+	bool IsEncapsulator();
 };
 
