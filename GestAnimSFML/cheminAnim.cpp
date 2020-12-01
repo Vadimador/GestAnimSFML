@@ -1,6 +1,6 @@
 #include "cheminAnim.h"
 
-cheminAnim::cheminAnim(GestAnimated* objet, sf::Vector2f (*fonction)(double))
+cheminAnim::cheminAnim(GestAnimated* objet, sf::Vector2f (*fonction)(float))
 	:GestAnim(objet)
 {
 	this->fonction = fonction;
