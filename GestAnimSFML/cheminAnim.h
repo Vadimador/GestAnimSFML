@@ -5,7 +5,7 @@ class cheminAnim :
 {
 private:
     sf::Vector2f (*fonction)(float);
-    double t;
+    float t;
 public:
 
     cheminAnim(GestAnimated* objet, sf::Vector2f (*fonction)(float));
