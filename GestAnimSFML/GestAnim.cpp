@@ -1,4 +1,6 @@
 #include "GestAnim.h"
+#include "GestAnimSFML.h"
+
 int GestAnim::IdCompteur = 0;
 sf::RenderWindow* GestAnim::window = nullptr;
 
@@ -26,9 +28,44 @@ GestAnim::GestAnim(GestAnimated* objet)
 	IdCompteur++;
 }
 
-void GestAnim::stop()
+void GestAnim::parentUpdate(float deltaTime)
+{
+	if (this->isStarted) {
+		this->update(deltaTime);
+	}
+	else
+	{
+		this->firstStart();
+		this->update(deltaTime);
+		this->isStarted = true;
+	}
+}
+
+void GestAnim::firstStart()
+{
+}
+
+void GestAnim::end()
 {
 	this->setState(EnumGestAnimState::Ending);
+}
+
+void GestAnim::pause()
+{
+	this->setState(EnumGestAnimState::Waiting);
+}
+
+void GestAnim::animate()
+{
+	this->setState(EnumGestAnimState::Animating);
+}
+
+GestAnim* GestAnim::nextGestAnimation(GestAnim* gestAnim)
+{
+	gestAnim->pause();
+	GestAnimSFML::addGestAnimation(gestAnim);
+	this->listNextAnim.push_back(gestAnim);
+	return gestAnim;
 }
 
 int GestAnim::getID()
@@ -43,6 +80,11 @@ EnumGestAnimState GestAnim::getState()
 
 GestAnim::~GestAnim()
 {
+	for (auto& i : this->listNextAnim)
+	{
+		i->animate();
+	}
+
 	if (this->objet->IsEncapsulator()) { // si la classe est une classe d'encapsulation
 		delete this->objet;
 	}

@@ -14,7 +14,7 @@ void GestAnimSFML::update(float deltaTime)
 	for (auto it = GestAnimSFML::listGestAnim.begin(); it != GestAnimSFML::listGestAnim.end(); it++, i++)
 	{
 		if ((*it)->getState() == EnumGestAnimState::Animating) {
-			(*it)->update(deltaTime);
+			(*it)->parentUpdate(deltaTime);
 		}
 		else if ((*it)->getState() == EnumGestAnimState::Ending) {
 			GestAnimSFML::listTempUpdateDelete.push_back(i);
@@ -32,12 +32,28 @@ void GestAnimSFML::update(float deltaTime)
 
 }
 
-void GestAnimSFML::addGestAnimation(GestAnim* gestAnim)
+GestAnim* GestAnimSFML::addGestAnimation(GestAnim* gestAnim)
 {
 	GestAnimSFML::listGestAnim.push_back(gestAnim);
+	return gestAnim;
 }
 
-GestAnim* GestAnimSFML::getGestAnim(int id)
+void GestAnimSFML::pauseGestAnimation(GestAnim* gestAnim)
+{
+	gestAnim->pause();
+}
+
+void GestAnimSFML::continueGestAnimation(GestAnim* gestAnim)
+{
+	gestAnim->animate();
+}
+
+/*void GestAnimSFML::pauseGestAnimation(int& id)
+{
+	GestAnimSFML::getGestAnim(id)->pause();
+}*/
+
+/*GestAnim* GestAnimSFML::getGestAnim(int id)
 {
 	for (auto it = GestAnimSFML::listGestAnim.begin(); it != GestAnimSFML::listGestAnim.end(); it++)
 	{
@@ -46,7 +62,7 @@ GestAnim* GestAnimSFML::getGestAnim(int id)
 		}
 	}
 	return nullptr;
-}
+}*/
 
 void GestAnimSFML::Delete(GestAnim* gestAnim)
 {
@@ -61,7 +77,7 @@ void GestAnimSFML::Delete(GestAnim* gestAnim)
 
 }
 
-void GestAnimSFML::DeleteWithId(int id)
+void GestAnimSFML::Delete(int id)
 {
 	for (auto it = GestAnimSFML::listGestAnim.begin(); it != GestAnimSFML::listGestAnim.end(); it++)
 	{

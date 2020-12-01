@@ -11,7 +11,7 @@ void SwitchColor::update(float deltaTime)
 	tempsTotal += deltaTime;
 	if (this->tempsTotal >= this->TempsMax) {
 		this->objet->setGestColor(this->finalColor);
-		this->stop();
+		this->end();
 	}
 	else
 	{
@@ -22,4 +22,9 @@ void SwitchColor::update(float deltaTime)
 											this->startColor.a + ((this->finalColor.a - this->startColor.a) * this->pourcentTransition)));
 	}
 	
+}
+
+void SwitchColor::firstStart()
+{
+	this->startColor = this->objet->getGestColor();
 }

@@ -13,5 +13,6 @@ private:
 public:
     Clignotement(GestAnimated* objet, float timeClignotement, sf::Color colorClingnotement = sf::Color::Transparent);
     void update(float deltaTime);
+    void firstStart();
 };
 

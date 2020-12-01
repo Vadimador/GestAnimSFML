@@ -13,5 +13,6 @@ private:
 public:
     SwitchColor(GestAnimated* objet, sf::Color Color, float time);
     void update(float deltaTime);
+    void firstStart();
 };
 

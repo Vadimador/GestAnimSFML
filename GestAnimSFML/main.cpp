@@ -2,12 +2,15 @@
 #include "SFML/Graphics.hpp"
 #include "GestAnimSFML.h"
 #include "EncaTransformable.h"
+#include "EncaShape.h"
+#include "SwitchColor.h"
 #include "testanim.h"
+#include "Clignotement.h"
 #include "cheminAnim.h"
 
 //Test cheminAnim
-sf::Vector2f monChemin(double t) {
-    return sf::Vector2f(100+100*sin(10*t), 100+200*cos(10*t)); //FORMULE A CHANGER  POUR CHANGER L'ANIMATION
+sf::Vector2f monChemin(float t) {
+    return sf::Vector2f(100+100*sin(3*t), 100+200*cos(3*t)); //FORMULE A CHANGER  POUR CHANGER L'ANIMATION
 };
 
 int main()
@@ -21,7 +24,13 @@ int main()
     shape.setPosition(sf::Vector2f(100.f, 100.f));
     shape.setFillColor(sf::Color::Green);
 
-    GestAnimSFML::addGestAnimation(new cheminAnim(new EncaTransformable(&shape),monChemin));
+    //Test des chaînes d'animation
+    GestAnim* ga = GestAnimSFML::addGestAnimation(new cheminAnim(new EncaTransformable(&shape),monChemin));
+    ga->nextGestAnimation(new SwitchColor(new EncaShape(&shape),sf::Color::Red, 3.f))
+      ->nextGestAnimation(new SwitchColor(new EncaShape(&shape), sf::Color::Blue, 3.f))
+      ->nextGestAnimation(new Clignotement(new EncaShape(&shape), 0.3f,sf::Color::Cyan));
+
+    bool onetime = true;
 
     sf::Clock clock;
     float deltaTime = 0.f;
@@ -37,14 +46,12 @@ int main()
         }
         //Update
         GestAnimSFML::update(deltaTime);
-        /*shape.rotate(0.05f);
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-            GestAnimSFML::addGestAnimation(new testanim(new EncaTransformable(&shape)));
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && onetime) {
+            ga->end();
+            onetime = false;
         }
         
-        std::cout << shape.getPosition().x << "," << shape.getPosition().y << "\n";
-        */
 
         window.clear();
         window.draw(shape);

@@ -34,3 +34,8 @@ void Clignotement::update(float deltaTime)
 										this->startColor.a + ((this->finalColor.a - this->startColor.a) * this->pourcentTransition)));
 
 }
+
+void Clignotement::firstStart()
+{
+	this->startColor = this->objet->getGestColor();
+}
