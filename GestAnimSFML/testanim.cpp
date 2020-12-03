@@ -1,5 +1,6 @@
 #include "testanim.h"
 
+
 testanim::testanim(GestAnimated* objet)
 	:GestAnim(objet)
 {

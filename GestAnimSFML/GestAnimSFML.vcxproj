@@ -159,6 +159,7 @@
     <ClCompile Include="GestAnimSFML.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="testanim.cpp" />
+    <ClCompile Include="TranslationAnim.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EncaTransformable.h" />
@@ -167,6 +168,7 @@
     <ClInclude Include="GestAnimated.h" />
     <ClInclude Include="GestAnimSFML.h" />
     <ClInclude Include="testanim.h" />
+    <ClInclude Include="TranslationAnim.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -3,6 +3,7 @@
 #include "GestAnimSFML.h"
 #include "EncaTransformable.h"
 #include "testanim.h"
+#include "TranslationAnim.h"
 
 int main()
 {
@@ -18,6 +19,9 @@ int main()
     sf::Clock clock;
     float deltaTime = 0.f;
 
+    GestAnimSFML::addGestAnimation(new TranslationAnim(new EncaTransformable(&shape), TranslationType::Time,
+        sf::Vector2f(100.f, 200.f), 0.f, 1.f));
+
     while (window.isOpen())
     {
         deltaTime = clock.restart().asSeconds();
@@ -29,10 +33,14 @@ int main()
         }
         //Update
         GestAnimSFML::update(deltaTime);
-        shape.rotate(0.05f);
+        //shape.rotate(0.05f);
+
+
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-            GestAnimSFML::addGestAnimation(new testanim(new EncaTransformable(&shape)));
+            //GestAnimSFML::addGestAnimation(new testanim(new EncaTransformable(&shape)));
+
+
         }
         
         std::cout << shape.getPosition().x << "," << shape.getPosition().y << "\n";
