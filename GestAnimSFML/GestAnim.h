@@ -25,7 +25,7 @@ public:
 	GestAnim(GestAnimated* objet);
 	void parentUpdate(float deltaTime);
 
-	virtual void firstStart(); // méthode vide pas obligatoire, à surcharger uniquement si votre GestAnim doit rafraichir ses variables si elle est activée à la chaîne.
+	virtual void firstStart(); // mï¿½thode vide pas obligatoire, ï¿½ surcharger uniquement si votre GestAnim doit rafraichir ses variables si elle est activï¿½e ï¿½ la chaï¿½ne.
 	virtual void update(float deltaTime) = 0;
 
 	virtual void end();

@@ -7,10 +7,11 @@
 #include "testanim.h"
 #include "Clignotement.h"
 #include "cheminAnim.h"
+#include "transition.h"
 
 //Test cheminAnim
 sf::Vector2f monChemin(float t) {
-    return sf::Vector2f(100+100*sin(3*t), 100+200*cos(3*t)); //FORMULE A CHANGER  POUR CHANGER L'ANIMATION
+    return sf::Vector2f(t, 0.2*sin(t* 2*3.14159265358979323846264338327950288419716939937510)); //FORMULE A CHANGER  POUR CHANGER L'ANIMATION
 };
 
 int main()
@@ -24,8 +25,10 @@ int main()
     shape.setPosition(sf::Vector2f(100.f, 100.f));
     shape.setFillColor(sf::Color::Green);
 
+
+
     //Test des chaînes d'animation
-    GestAnim* ga = GestAnimSFML::addGestAnimation(new cheminAnim(new EncaTransformable(&shape),monChemin));
+    GestAnim* ga = GestAnimSFML::addGestAnimation(new transition(new EncaTransformable(&shape),monChemin,sf::Vector2f(600,300), 1.f));
     ga->nextGestAnimation(new SwitchColor(new EncaShape(&shape),sf::Color::Red, 3.f))
       ->nextGestAnimation(new SwitchColor(new EncaShape(&shape), sf::Color::Blue, 3.f))
       ->nextGestAnimation(new Clignotement(new EncaShape(&shape), 0.3f,sf::Color::Cyan));

@@ -163,6 +163,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SwitchColor.cpp" />
     <ClCompile Include="testanim.cpp" />
+    <ClCompile Include="transition.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cheminAnim.h" />
@@ -175,6 +176,7 @@
     <ClInclude Include="GestAnimSFML.h" />
     <ClInclude Include="SwitchColor.h" />
     <ClInclude Include="testanim.h" />
+    <ClInclude Include="transition.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
