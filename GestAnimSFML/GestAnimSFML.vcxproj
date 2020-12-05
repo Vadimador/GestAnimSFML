@@ -153,21 +153,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cheminAnim.cpp" />
+    <ClCompile Include="Clignotement.cpp" />
+    <ClCompile Include="EncaShape.cpp" />
     <ClCompile Include="EncaTransformable.cpp" />
     <ClCompile Include="GestAnim.cpp" />
     <ClCompile Include="GestAnimated.cpp" />
     <ClCompile Include="GestAnimSFML.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SwitchColor.cpp" />
     <ClCompile Include="testanim.cpp" />
+    <ClCompile Include="transition.cpp" />
     <ClCompile Include="TranslationAnim.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cheminAnim.h" />
+    <ClInclude Include="Clignotement.h" />
+    <ClInclude Include="EncaShape.h" />
     <ClInclude Include="EncaTransformable.h" />
     <ClInclude Include="EnumGestAnimState.h" />
     <ClInclude Include="GestAnim.h" />
     <ClInclude Include="GestAnimated.h" />
     <ClInclude Include="GestAnimSFML.h" />
+    <ClInclude Include="SwitchColor.h" />
     <ClInclude Include="testanim.h" />
+    <ClInclude Include="transition.h" />
     <ClInclude Include="TranslationAnim.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
