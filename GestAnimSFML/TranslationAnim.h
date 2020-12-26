@@ -8,7 +8,7 @@
 
 enum class TranslationType
 {
-	Speed, //la vitesse de la translation est donnée en paramétre
+	Speed, //la vitesse de la translation est donnée en paramètre
 	Time //la durée de la translation est donnée en paramètre
 };
 
@@ -33,6 +33,7 @@ private:
 
 
 public:
+	//changer : objet, point, et float ou double en fonction de speed ou time
 	TranslationAnim(GestAnimated* objet, TranslationType type, sf::Vector2f direction,
 		float speed = 0.0, float time = 0.0);
 	void update(float deltaTime);

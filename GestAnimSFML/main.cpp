@@ -8,6 +8,7 @@
 #include "Clignotement.h"
 #include "cheminAnim.h"
 #include "transition.h"
+#include "TranslationAnim.h"
 
 //Test cheminAnim
 sf::Vector2f monChemin(float t) {
@@ -29,17 +30,17 @@ int main()
 
     //Test des chaînes d'animation
     GestAnim* ga = GestAnimSFML::addGestAnimation(new transition(new EncaTransformable(&shape),monChemin,sf::Vector2f(600,300), 1.f));
-    ga->nextGestAnimation(new SwitchColor(new EncaShape(&shape),sf::Color::Red, 3.f))
-      ->nextGestAnimation(new SwitchColor(new EncaShape(&shape), sf::Color::Blue, 3.f))
-      ->nextGestAnimation(new Clignotement(new EncaShape(&shape), 0.3f,sf::Color::Cyan));
+    ga->nextGestAnimation(new SwitchColor(new EncaShape(&shape), sf::Color::Red, 3.f))
+        ->nextGestAnimation(new SwitchColor(new EncaShape(&shape), sf::Color::Blue, 3.f))
+        //->nextGestAnimation(new Clignotement(new EncaShape(&shape), 0.3f, sf::Color::Cyan))
+        ->nextGestAnimation(new TranslationAnim(new EncaShape(&shape), TranslationType::Time,
+            sf::Vector2f(-100.f, -200.f), 0.f, 1.f));
 
     bool onetime = true;
 
     sf::Clock clock;
     float deltaTime = 0.f;
 
-    GestAnimSFML::addGestAnimation(new TranslationAnim(new EncaTransformable(&shape), TranslationType::Time,
-        sf::Vector2f(100.f, 200.f), 0.f, 1.f));
 
     while (window.isOpen())
     {
