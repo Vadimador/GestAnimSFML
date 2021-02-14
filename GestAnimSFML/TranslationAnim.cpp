@@ -4,9 +4,9 @@
 
 
 
-TranslationAnim::TranslationAnim(GestAnimated* object, TranslationTypeTime* transType)
-	:GestAnim(object), isFinalPoint(transType->isFinalPoint), type(transType->te), direction(transType->direction),
-	time(transType->time), remainingTime(time)
+TranslationAnim::TranslationAnim(GestAnimated* object, TranslationTypeTime&& transType)
+	:GestAnim(object), isFinalPoint(transType.isFinalPoint), type(transType.te), direction(transType.direction),
+	time(transType.time), remainingTime(time)
 {
 	//direction doit être modifié au lancement de l'animation, en fonction de isFinalPoint notamment
 	//Ceci est effectué dans firstStart
@@ -14,9 +14,9 @@ TranslationAnim::TranslationAnim(GestAnimated* object, TranslationTypeTime* tran
 
 
 
-TranslationAnim::TranslationAnim(GestAnimated* object, TranslationTypeSpeed* transType)
-	: GestAnim(object), isFinalPoint(transType->isFinalPoint), type(transType->te), direction(transType->direction), 
-	speed(transType->speed)
+TranslationAnim::TranslationAnim(GestAnimated* object, TranslationTypeSpeed&& transType)
+	: GestAnim(object), isFinalPoint(transType.isFinalPoint), type(transType.te), direction(transType.direction), 
+	speed(transType.speed)
 {
 	//direction doit être modifié au lancement de l'animation, en fonction de isFinalPoint notamment
 	//Ceci est effectué dans firstStart

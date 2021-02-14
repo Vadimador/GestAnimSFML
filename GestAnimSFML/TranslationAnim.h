@@ -81,8 +81,8 @@ private:
 	sf::Vector2f PointsToVector(sf::Vector2f initial, sf::Vector2f final);
 
 public:
-	TranslationAnim(GestAnimated* object, TranslationTypeTime* transType);
-	TranslationAnim(GestAnimated* object, TranslationTypeSpeed* transType);
+	TranslationAnim(GestAnimated* object, TranslationTypeTime&& transType);
+	TranslationAnim(GestAnimated* object, TranslationTypeSpeed&& transType);
 	void update(float deltaTime);
 	void firstStart();
 };
