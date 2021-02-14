@@ -29,12 +29,13 @@ int main()
 
 
     //Test des chaînes d'animation
-    GestAnim* ga = GestAnimSFML::addGestAnimation(new transition(new EncaTransformable(&shape),monChemin,sf::Vector2f(600,300), 1.f));
-    ga->nextGestAnimation(new SwitchColor(new EncaShape(&shape), sf::Color::Red, 3.f))
+    //GestAnim* ga = GestAnimSFML::addGestAnimation(new transition(new EncaTransformable(&shape),monChemin,sf::Vector2f(600,300), 0.5f));
+    /*ga->nextGestAnimation(new SwitchColor(new EncaShape(&shape), sf::Color::Red, 3.f))
         ->nextGestAnimation(new SwitchColor(new EncaShape(&shape), sf::Color::Blue, 3.f))
-        //->nextGestAnimation(new Clignotement(new EncaShape(&shape), 0.3f, sf::Color::Cyan))
-        ->nextGestAnimation(new TranslationAnim(new EncaShape(&shape), TranslationType::Time,
-            sf::Vector2f(-100.f, -200.f), 0.f, 1.f));
+        ->nextGestAnimation(new Clignotement(new EncaShape(&shape), 0.3f, sf::Color::Cyan))*/
+    GestAnim* ga = GestAnimSFML::addGestAnimation(
+            new TranslationAnim(new EncaShape(&shape), new TranslationTypeSpeed(100.f, sf::Vector2f(400.f, 20.f), false)));
+    ga->nextGestAnimation(new TranslationAnim(new EncaShape(&shape), new TranslationTypeTime(1.f, sf::Vector2f(200.f, 200.f), true)));
 
     bool onetime = true;
 
