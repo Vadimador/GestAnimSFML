@@ -34,8 +34,8 @@ int main()
         ->nextGestAnimation(new SwitchColor(new EncaShape(&shape), sf::Color::Blue, 3.f))
         ->nextGestAnimation(new Clignotement(new EncaShape(&shape), 0.3f, sf::Color::Cyan))*/
     GestAnim* ga = GestAnimSFML::addGestAnimation(
-            new TranslationAnim(new EncaShape(&shape), new TranslationTypeSpeed(100.f, sf::Vector2f(400.f, 20.f), false)));
-    ga->nextGestAnimation(new TranslationAnim(new EncaShape(&shape), new TranslationTypeTime(1.f, sf::Vector2f(200.f, 200.f), true)));
+            new TranslationAnim(new EncaShape(&shape), TranslationTypeSpeed(10000000.f, sf::Vector2f(400.f, 20.f), false)));
+    ga->nextGestAnimation(new TranslationAnim(new EncaShape(&shape), TranslationTypeTime(1.f, sf::Vector2f(200.f, 200.f), true)));
 
     bool onetime = true;
 
