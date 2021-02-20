@@ -60,12 +60,15 @@ class TranslationAnim : public GestAnim
 private:
 
 	//booléen pour déterminer si les paramètres fournissent le vecteur directeur ou le point d'arrivée
-	//afin d'initialiser correctement "direction"
+	//afin d'initialiser correctement "direction" et "finalPoint"
 	bool isFinalPoint;
 
 	//direction de la translation et distance à parcourir (longueur du vecteur)
 	sf::Vector2f direction;
 	float length = 0.f;
+
+	//Point d'arrivée, où l'objet sera placé à la fin de la translation
+	sf::Vector2f finalPoint;
 
 	//type de translation (suivant la vitesse ou le temps)
 	TranslationEnumType type;
@@ -81,8 +84,8 @@ private:
 	sf::Vector2f PointsToVector(sf::Vector2f initial, sf::Vector2f final);
 
 public:
-	TranslationAnim(GestAnimated* object, TranslationTypeTime* transType);
-	TranslationAnim(GestAnimated* object, TranslationTypeSpeed* transType);
+	TranslationAnim(GestAnimated* object, TranslationTypeTime&& transType);
+	TranslationAnim(GestAnimated* object, TranslationTypeSpeed&& transType);
 	void update(float deltaTime);
 	void firstStart();
 };

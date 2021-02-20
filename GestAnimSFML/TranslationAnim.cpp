@@ -4,9 +4,9 @@
 
 
 
-TranslationAnim::TranslationAnim(GestAnimated* object, TranslationTypeTime* transType)
-	:GestAnim(object), isFinalPoint(transType->isFinalPoint), type(transType->te), direction(transType->direction),
-	time(transType->time), remainingTime(time)
+TranslationAnim::TranslationAnim(GestAnimated* object, TranslationTypeTime&& transType)
+	:GestAnim(object), isFinalPoint(transType.isFinalPoint), type(transType.te), direction(transType.direction),
+	time(transType.time), remainingTime(time)
 {
 	//direction doit être modifié au lancement de l'animation, en fonction de isFinalPoint notamment
 	//Ceci est effectué dans firstStart
@@ -14,9 +14,9 @@ TranslationAnim::TranslationAnim(GestAnimated* object, TranslationTypeTime* tran
 
 
 
-TranslationAnim::TranslationAnim(GestAnimated* object, TranslationTypeSpeed* transType)
-	: GestAnim(object), isFinalPoint(transType->isFinalPoint), type(transType->te), direction(transType->direction), 
-	speed(transType->speed)
+TranslationAnim::TranslationAnim(GestAnimated* object, TranslationTypeSpeed&& transType)
+	: GestAnim(object), isFinalPoint(transType.isFinalPoint), type(transType.te), direction(transType.direction), 
+	speed(transType.speed)
 {
 	//direction doit être modifié au lancement de l'animation, en fonction de isFinalPoint notamment
 	//Ceci est effectué dans firstStart
@@ -57,9 +57,10 @@ void TranslationAnim::update(float deltaTime)
 	{
 		remainingTime -= deltaTime;
 
-		//si l'on a dépassé le délai restant, on s'arrête
+		//si l'on a dépassé le délai restant, on est parvenu au point d'arrivée
 		if (remainingTime <= 0)
 		{
+			this->objet->setGestPosition(this->finalPoint);
 			this->end();
 		}
 		//sinon, on regarde la proportion p de chemin à parcourir
@@ -79,10 +80,17 @@ void TranslationAnim::update(float deltaTime)
 
 void TranslationAnim::firstStart()
 {
-	//suivant isFinalPoint, il faut ou non calculer le vecteur directeur
-	if (isFinalPoint) {
-		sf::Vector2f position = this->objet->getGestPosition();
+	sf::Vector2f position = this->objet->getGestPosition();
+
+	//suivant isFinalPoint, il faut initialiser finalPoint, et calculer ou non le vecteur directeur
+	if (isFinalPoint)
+	{
+		this->finalPoint = this->direction;
 		this->direction = PointsToVector(position, this->direction);
+	}
+	else
+	{
+		this->finalPoint = sf::Vector2f(position.x + direction.x, position.y + direction.y);
 	}
 
 
