@@ -1,7 +1,6 @@
 #include "GestAnimSFML.h"
 
 std::vector<GestAnim*> GestAnimSFML::listGestAnim;
-std::vector<int> GestAnimSFML::listTempUpdateDelete;
 
 GestAnimSFML::GestAnimSFML(sf::RenderWindow* window)
 {
@@ -10,26 +9,17 @@ GestAnimSFML::GestAnimSFML(sf::RenderWindow* window)
 
 void GestAnimSFML::update(float deltaTime)
 {
-	int i = 0;
-	for (auto it = GestAnimSFML::listGestAnim.begin(); it != GestAnimSFML::listGestAnim.end(); it++, i++)
+	for (size_t i = 0; i < GestAnimSFML::listGestAnim.size(); i++)
 	{
-		if ((*it)->getState() == EnumGestAnimState::Animating) {
-			(*it)->parentUpdate(deltaTime);
+		if (GestAnimSFML::listGestAnim[i]->getState() == EnumGestAnimState::Animating) {
+			GestAnimSFML::listGestAnim[i]->parentUpdate(deltaTime);
 		}
-		else if ((*it)->getState() == EnumGestAnimState::Ending) {
-			GestAnimSFML::listTempUpdateDelete.push_back(i);
+		else if (GestAnimSFML::listGestAnim[i]->getState() == EnumGestAnimState::Ending) {
+			delete GestAnimSFML::listGestAnim[i];
+			GestAnimSFML::listGestAnim.erase(GestAnimSFML::listGestAnim.begin() + i);
+			i--;
 		}
-		
 	}
-	
-	for (int index = GestAnimSFML::listTempUpdateDelete.size() - 1; index >= 0; index--) // amélioration possible : transformer ce for en for avec iterateur
-	{
-		delete (*(GestAnimSFML::listGestAnim.begin() + index));
-		GestAnimSFML::listGestAnim.erase(GestAnimSFML::listGestAnim.begin() + index);
-		GestAnimSFML::listTempUpdateDelete.erase(GestAnimSFML::listTempUpdateDelete.begin() + index);
-	}
-
-
 }
 
 GestAnim* GestAnimSFML::addGestAnimation(GestAnim* gestAnim)

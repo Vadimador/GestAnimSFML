@@ -18,14 +18,17 @@ sf::Vector2f monChemin(float t) {
 int main()
 {
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-    sf::RenderWindow window(sf::VideoMode(1000, 500), "SFML works!");
+    sf::RenderWindow window(sf::VideoMode(1000, 1000), "SFML works!");
     GestAnimSFML gAnimSFML = GestAnimSFML(&window); // initialisation
     
-    sf::RectangleShape shape(sf::Vector2f(100.f, 50.f));
+    sf::RectangleShape shape(sf::Vector2f(100.f, 100.f));
+    sf::RectangleShape shape2(sf::Vector2f(50.f, 50.f));
 
-    shape.setPosition(sf::Vector2f(100.f, 100.f));
+    shape.setPosition(sf::Vector2f(0.f, 0.f));
     shape.setFillColor(sf::Color::Green);
 
+    shape2.setPosition(sf::Vector2f(100.f, 0.f));
+    shape2.setFillColor(sf::Color::Red);
 
 
     //Test des chaînes d'animation
@@ -33,9 +36,12 @@ int main()
     /*ga->nextGestAnimation(new SwitchColor(new EncaShape(&shape), sf::Color::Red, 3.f))
         ->nextGestAnimation(new SwitchColor(new EncaShape(&shape), sf::Color::Blue, 3.f))
         ->nextGestAnimation(new Clignotement(new EncaShape(&shape), 0.3f, sf::Color::Cyan))*/
-    GestAnim* ga = GestAnimSFML::addGestAnimation(
-            new TranslationAnim(new EncaShape(&shape), TranslationTypeSpeed(200.f, sf::Vector2f(400.f, 20.f), false)));
-    ga->nextGestAnimation(new TranslationAnim(new EncaShape(&shape), TranslationTypeTime(0.00001f, sf::Vector2f(200.f, 200.f), true)));
+    //GestAnim* ga = GestAnimSFML::addGestAnimation(new TranslationAnim(new EncaShape(&shape), TranslationTypeSpeed(-1.f, sf::Vector2f(400.f, 400.f), true)));
+    //ga->nextGestAnimation(new TranslationAnim(new EncaShape(&shape), TranslationTypeTime(3.f, sf::Vector2f(0.f, 0.f), true)));
+    GestAnimSFML::addGestAnimation(new Clignotement(new EncaShape(&shape), 1.f));
+    GestAnimSFML::addGestAnimation(new TranslationAnim(new EncaShape(&shape), TranslationTypeTime(3.f, sf::Vector2f(400.f, 400.f), true)));
+    GestAnimSFML::addGestAnimation(new TranslationAnim(new EncaShape(&shape2), TranslationTypeTime(10.f, sf::Vector2f(400.f, 0.f), false)));
+    GestAnimSFML::addGestAnimation(new Clignotement(new EncaShape(&shape2), 0.2f));
 
     bool onetime = true;
 
@@ -56,13 +62,14 @@ int main()
         GestAnimSFML::update(deltaTime);
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && onetime) {
-            ga->end();
+            //ga->end();
             onetime = false;
         }
         
 
         window.clear();
         window.draw(shape);
+        window.draw(shape2);
         window.display();
     }
     
