@@ -17,7 +17,8 @@ public:
 	virtual void setGestSize(sf::Vector2f size);
 	virtual void setGestPosition(sf::Vector2f position);
 	virtual void setGestRotationAxis(sf::Vector2f posAxis) ;
-	virtual void setGestRotation(float rotation);
+	virtual void setGestRotation(float rotation); // rotation général un (défini le degree de la rotation)
+	virtual void setGestRotate(float rotation); // rotation dynamique (ajoute le nombre donnée au degrée de la rotation actuel)
 	virtual void setGestColor(sf::Color color);
 
 	bool IsEncapsulator();

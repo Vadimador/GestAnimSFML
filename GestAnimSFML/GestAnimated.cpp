@@ -46,6 +46,10 @@ void GestAnimated::setGestRotation(float rotation)
 {
 }
 
+void GestAnimated::setGestRotate(float rotation)
+{
+}
+
 void GestAnimated::setGestColor(sf::Color color)
 {
 }

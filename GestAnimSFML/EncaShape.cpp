@@ -50,6 +50,11 @@ void EncaShape::setGestRotation(float rotation)
     this->shape->setRotation(rotation);
 }
 
+void EncaShape::setGestRotate(float rotation)
+{
+    this->shape->rotate(rotation);
+}
+
 void EncaShape::setGestColor(sf::Color color)
 {
     this->shape->setFillColor(color);

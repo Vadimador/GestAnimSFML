@@ -9,6 +9,7 @@
 #include "cheminAnim.h"
 #include "transition.h"
 #include "TranslationAnim.h"
+#include "Rotation.h"
 
 //Test cheminAnim
 sf::Vector2f monChemin(float t) {
@@ -42,6 +43,7 @@ int main()
     GestAnimSFML::addGestAnimation(new TranslationAnim(new EncaShape(&shape), TranslationTypeTime(3.f, sf::Vector2f(400.f, 400.f), true)));
     GestAnimSFML::addGestAnimation(new TranslationAnim(new EncaShape(&shape2), TranslationTypeTime(10.f, sf::Vector2f(400.f, 0.f), false)));
     GestAnimSFML::addGestAnimation(new Clignotement(new EncaShape(&shape2), 0.2f));
+    GestAnimSFML::addGestAnimation(new Rotation(new EncaShape(&shape), 100.f,true));
 
     bool onetime = true;
 

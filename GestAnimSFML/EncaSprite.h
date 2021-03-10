@@ -1,13 +1,13 @@
 #pragma once
 #include "GestAnimated.h"
-class EncaShape :
+
+class EncaSprite :
     public GestAnimated
 {
 private:
-    sf::Shape* shape;
+	sf::Sprite* sprite;
 public:
-
-	EncaShape(sf::Shape* shape);
+	EncaSprite(sf::Sprite* sprite);
 
 	sf::Vector2f getGestSize() const;
 	sf::Vector2f getGestPosition() const;

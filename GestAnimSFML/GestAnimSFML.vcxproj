@@ -156,11 +156,13 @@
     <ClCompile Include="cheminAnim.cpp" />
     <ClCompile Include="Clignotement.cpp" />
     <ClCompile Include="EncaShape.cpp" />
+    <ClCompile Include="EncaSprite.cpp" />
     <ClCompile Include="EncaTransformable.cpp" />
     <ClCompile Include="GestAnim.cpp" />
     <ClCompile Include="GestAnimated.cpp" />
     <ClCompile Include="GestAnimSFML.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Rotation.cpp" />
     <ClCompile Include="SwitchColor.cpp" />
     <ClCompile Include="testanim.cpp" />
     <ClCompile Include="transition.cpp" />
@@ -170,11 +172,13 @@
     <ClInclude Include="cheminAnim.h" />
     <ClInclude Include="Clignotement.h" />
     <ClInclude Include="EncaShape.h" />
+    <ClInclude Include="EncaSprite.h" />
     <ClInclude Include="EncaTransformable.h" />
     <ClInclude Include="EnumGestAnimState.h" />
     <ClInclude Include="GestAnim.h" />
     <ClInclude Include="GestAnimated.h" />
     <ClInclude Include="GestAnimSFML.h" />
+    <ClInclude Include="Rotation.h" />
     <ClInclude Include="SwitchColor.h" />
     <ClInclude Include="testanim.h" />
     <ClInclude Include="transition.h" />
